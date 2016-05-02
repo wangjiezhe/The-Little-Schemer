@@ -13,7 +13,7 @@
 (define (addtup tup)
   (cond
    [(null? tup) 0]
-   [(else (o+ (car tup) (addtup (cdr tup))))]))
+   [else (o+ (car tup) (addtup (cdr tup)))]))
 
 (define (o* n m)
   (cond
@@ -56,7 +56,7 @@
    [(zero? m) 1]
    [else (o* n (o^ n (sub1 m)))]))
 
-(define (0/ n m)
+(define (o/ n m)
   (cond
    [(o< n m) 0]
    [else (add1 (o/ (o- n m) m))]))
@@ -88,7 +88,7 @@
 (define (all-nums lat)
   (cond
    [(null? lat) '()]
-   [(number? car lat)
+   [(number? (car lat))
     (cons (car lat)
           (all-nums (cdr lat)))]
    [else (all-nums (cdr lat))]))

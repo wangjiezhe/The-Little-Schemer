@@ -1,6 +1,6 @@
 ;;; 3. Cons the Magnificent
 
-(define rember (a lat)
+(define (rember a lat)
   (cond
    [(null? lat) '()]
    [(eq? (car lat) a) (cdr lat)]
@@ -81,5 +81,5 @@
    [(eq? (car lat) old)
     (cons new
           (multisubst new old (cdr lat)))]
-   [(else (cons (car lat)
-                (multisubst new old (cdr lat))))]))
+   [else (cons (car lat)
+               (multisubst new old (cdr lat)))]))

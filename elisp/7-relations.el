@@ -57,7 +57,7 @@
 ;;   (cond
 ;;    ((null set1) nil)
 ;;    ((member? (car set1) set2) t)
-;;    (t (insersect (cdr set1) set2))
+;;    (t (insersect? (cdr set1) set2))
 ;;    )
 ;;   )
 
@@ -160,8 +160,14 @@
    )
   )
 
+(defun seconds (l)
+  (cond
+   ((null l) (quote ()))
+   (else (cons (second (car l))
+               (seconds (cdr l))))))
+
 (defun fullfun? (fun)
-  (set? (second fun))
+  (set? (seconds fun))
   )
 
 (defun one-to-one? (fun)
