@@ -1158,183 +1158,183 @@
 
 ; stop function
 #;(define will-stop?
-  (lambda (f)
-    ...))
+    (lambda (f)
+      ...))
 
 ; It turns out that will-stop? cannot be defined
 #;(define last-try
-  (lambda (x)
-    (and (will-stop? last-try)
-         (eternity x))))
+    (lambda (x)
+      (and (will-stop? last-try)
+           (eternity x))))
 
 
 ; length_0
-(lambda (l)
-  (cond
-    ((null? l) 0)
-    (else (add1 (eternity (cdr l))))))
+#;(lambda (l)
+    (cond
+      ((null? l) 0)
+      (else (add1 (eternity (cdr l))))))
 
 ; length_<=1
-(lambda (l)
-  (cond
-    ((null? l) 0)
-    (else
-     (add1
-      ((lambda (l)
-         (cond
-           ((null? l) 0)
-           (else (add1
-                  (eternity (cdr l))))))
-       (cdr l))))))
+#;(lambda (l)
+    (cond
+      ((null? l) 0)
+      (else
+       (add1
+        ((lambda (l)
+           (cond
+             ((null? l) 0)
+             (else (add1
+                    (eternity (cdr l))))))
+         (cdr l))))))
 
 ; length_<=2
-(lambda (l)
-  (cond
-    ((null? l) 0)
-    (else
-     (add1
-      ((lambda (l)
-         (cond
-           ((null? l) 0)
-           (else
-            (add1
-             ((lambda (l)
-                (cond
-                  ((null? l) 0)
-                  (else
-                   (add1
-                    (eternity
-                     (cdr l))))))
-              (cdr l))))))
-       (cdr l))))))
+#;(lambda (l)
+    (cond
+      ((null? l) 0)
+      (else
+       (add1
+        ((lambda (l)
+           (cond
+             ((null? l) 0)
+             (else
+              (add1
+               ((lambda (l)
+                  (cond
+                    ((null? l) 0)
+                    (else
+                     (add1
+                      (eternity
+                       (cdr l))))))
+                (cdr l))))))
+         (cdr l))))))
 
 ; length_0
-((lambda (length)
-   (lambda (l)
-     (cond
-       ((null? l) 0)
-       (else (add1 (length (cdr l)))))))
- eternity)
+#;((lambda (length)
+     (lambda (l)
+       (cond
+         ((null? l) 0)
+         (else (add1 (length (cdr l)))))))
+   eternity)
 
 ; length_<=1
-((lambda (f)
-   (lambda (l)
-     (cond
-       ((null? l) 0)
-       (else (add1 (f (cdr l)))))))
- ((lambda (g)
-   (lambda (l)
-     (cond
-       ((null? l) 0)
-       (else (add1 (g (cdr l)))))))
-  eternity))
+#;((lambda (f)
+     (lambda (l)
+       (cond
+         ((null? l) 0)
+         (else (add1 (f (cdr l)))))))
+   ((lambda (g)
+      (lambda (l)
+        (cond
+          ((null? l) 0)
+          (else (add1 (g (cdr l)))))))
+    eternity))
 
 ; length_<=2
-((lambda (length)
-   (lambda (l)
-     (cond
-       ((null? l) 0)
-       (else (add1 (length (cdr l)))))))
- ((lambda (length)
-   (lambda (l)
-     (cond
-       ((null? l) 0)
-       (else (add1 (length (cdr l)))))))
-  ((lambda (length)
-   (lambda (l)
-     (cond
-       ((null? l) 0)
-       (else (add1 (length (cdr l)))))))
-   eternity)))
+#;((lambda (length)
+     (lambda (l)
+       (cond
+         ((null? l) 0)
+         (else (add1 (length (cdr l)))))))
+   ((lambda (length)
+      (lambda (l)
+        (cond
+          ((null? l) 0)
+          (else (add1 (length (cdr l)))))))
+    ((lambda (length)
+       (lambda (l)
+         (cond
+           ((null? l) 0)
+           (else (add1 (length (cdr l)))))))
+     eternity)))
 
 ; mk-length
-(lambda (length)
-   (lambda (l)
-     (cond
-       ((null? l) 0)
-       (else (add1 (length (cdr l)))))))
+#;(lambda (length)
+    (lambda (l)
+      (cond
+        ((null? l) 0)
+        (else (add1 (length (cdr l)))))))
 
 ; length_0
-((lambda (mk-length)
-   (mk-length eternity))
- (lambda (length)
-   (lambda (l)
-     (cond
-       ((null? l) 0)
-       (else (add1 (length (cdr l))))))))
+#;((lambda (mk-length)
+     (mk-length eternity))
+   (lambda (length)
+     (lambda (l)
+       (cond
+         ((null? l) 0)
+         (else (add1 (length (cdr l))))))))
 
 ; length_<=1
-((lambda (mk-length)
-   (mk-length
-    (mk-length eternity)))
- (lambda (length)
-   (lambda (l)
-     (cond
-       ((null? l) 0)
-       (else (add1 (length (cdr l))))))))
+#;((lambda (mk-length)
+     (mk-length
+      (mk-length eternity)))
+   (lambda (length)
+     (lambda (l)
+       (cond
+         ((null? l) 0)
+         (else (add1 (length (cdr l))))))))
 
 ; length_<=2
-((lambda (mk-length)
-   (mk-length
-    (mk-length
-     (mk-length eternity))))
- (lambda (length)
-   (lambda (l)
-     (cond
-       ((null? l) 0)
-       (else (add1 (length (cdr l))))))))
+#;((lambda (mk-length)
+     (mk-length
+      (mk-length
+       (mk-length eternity))))
+   (lambda (length)
+     (lambda (l)
+       (cond
+         ((null? l) 0)
+         (else (add1 (length (cdr l))))))))
 
 ; length_<=3
-((lambda (mk-length)
-   (mk-length
-    (mk-length
+#;((lambda (mk-length)
      (mk-length
-      (mk-length eternity)))))
- (lambda (length)
-   (lambda (l)
-     (cond
-       ((null? l) 0)
-       (else (add1 (length (cdr l))))))))
+      (mk-length
+       (mk-length
+        (mk-length eternity)))))
+   (lambda (length)
+     (lambda (l)
+       (cond
+         ((null? l) 0)
+         (else (add1 (length (cdr l))))))))
 
 ; length_0
-((lambda (mk-length)
-   (mk-length mk-length))
- (lambda (length)
-   (lambda (l)
-     (cond
-       ((null? l) 0)
-       (else (add1 (length (cdr l))))))))
+#;((lambda (mk-length)
+     (mk-length mk-length))
+   (lambda (length)
+     (lambda (l)
+       (cond
+         ((null? l) 0)
+         (else (add1 (length (cdr l))))))))
 
 ; length_0
-((lambda (mk-length)
-   (mk-length mk-length))
- (lambda (mk-length)
-   (lambda (l)
-     (cond
-       ((null? l) 0)
-       (else (add1 (mk-length (cdr l))))))))
+#;((lambda (mk-length)
+     (mk-length mk-length))
+   (lambda (mk-length)
+     (lambda (l)
+       (cond
+         ((null? l) 0)
+         (else (add1 (mk-length (cdr l))))))))
 
 ; length_<=1
-((lambda (mk-length)
-   (mk-length mk-length))
- (lambda (mk-length)
-   (lambda (l)
-     (cond
-       ((null? l) 0)
-       (else (add1
-              ((mk-length eternity)
-               (cdr l))))))))
+#;((lambda (mk-length)
+     (mk-length mk-length))
+   (lambda (mk-length)
+     (lambda (l)
+       (cond
+         ((null? l) 0)
+         (else (add1
+                ((mk-length eternity)
+                 (cdr l))))))))
 
 ; length
-((lambda (mk-length)
-   (mk-length mk-length))
- (lambda (mk-length)
-   (lambda (l)
-     (cond
-       ((null? l) 0)
-       (else (add1
-              ((mk-length mk-length)
-               (cdr l))))))))
+#;((lambda (mk-length)
+     (mk-length mk-length))
+   (lambda (mk-length)
+     (lambda (l)
+       (cond
+         ((null? l) 0)
+         (else (add1
+                ((mk-length mk-length)
+                 (cdr l))))))))
 
 ; length
 #;((lambda (mk-length)
@@ -1349,12 +1349,12 @@
 
 ; length
 #;((lambda (mk-length)
-   ((lambda (length)
-      (lambda (l)
-        (cond
-          ((null? l) 0)
-          (else (add1 (length (cdr l)))))))
-    (mk-length mk-length)))
+     ((lambda (length)
+        (lambda (l)
+          (cond
+            ((null? l) 0)
+            (else (add1 (length (cdr l)))))))
+      (mk-length mk-length)))
    (lambda (mk-length)
      ((lambda (length)
         (lambda (l)
@@ -1411,52 +1411,52 @@
         (mk-length mk-length))))))
 
 ; length
-((lambda (mk-length)
-   (mk-length mk-length))
- (lambda (mk-length)
-   (lambda (l)
-     (cond
-       ((null? l) 0)
-       (else (add1
-              ((lambda (x)
-                 ((mk-length mk-length) x))
-               (cdr l))))))))
+#;((lambda (mk-length)
+     (mk-length mk-length))
+   (lambda (mk-length)
+     (lambda (l)
+       (cond
+         ((null? l) 0)
+         (else (add1
+                ((lambda (x)
+                   ((mk-length mk-length) x))
+                 (cdr l))))))))
 
 ; Surrounded with a lambda for not expanding infinitely
 ; in applicative order
 ;
 ; length
-((lambda (mk-length)
-   (mk-length mk-length))
- (lambda (mk-length)
-   ((lambda (length)
-      (lambda (l)
-        (cond
-          ((null? l) 0)
-          (else (add1 (length (cdr l)))))))
-    (lambda (x)
-      ((mk-length mk-length) x)))))
-
-; length
-((lambda (le)
-   ((lambda (mk-length)
-      (mk-length mk-length))
-    (lambda (mk-length)
-      (le (lambda (x)
-            ((mk-length mk-length) x))))))
- (lambda (length)
-   (lambda (l)
-     (cond
-       ((null? l) 0)
-       (else (add1 (length (cdr l))))))))
-
-; Y
-(lambda (le)
-  ((lambda (mk-length)
+#;((lambda (mk-length)
      (mk-length mk-length))
    (lambda (mk-length)
-     (le (lambda (x)
-           ((mk-length mk-length) x))))))
+     ((lambda (length)
+        (lambda (l)
+          (cond
+            ((null? l) 0)
+            (else (add1 (length (cdr l)))))))
+      (lambda (x)
+        ((mk-length mk-length) x)))))
+
+; length
+#;((lambda (le)
+     ((lambda (mk-length)
+        (mk-length mk-length))
+      (lambda (mk-length)
+        (le (lambda (x)
+              ((mk-length mk-length) x))))))
+   (lambda (length)
+     (lambda (l)
+       (cond
+         ((null? l) 0)
+         (else (add1 (length (cdr l))))))))
+
+; Y
+#;(lambda (le)
+    ((lambda (mk-length)
+       (mk-length mk-length))
+     (lambda (mk-length)
+       (le (lambda (x)
+             ((mk-length mk-length) x))))))
 
 ; applicative-order Y combinator
 (define Y
