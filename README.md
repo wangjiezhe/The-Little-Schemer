@@ -1,4 +1,4 @@
-The Litter Schemer
+The Little Schemer
 ==================
 
 
